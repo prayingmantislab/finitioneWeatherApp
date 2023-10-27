@@ -27,10 +27,10 @@ interface WeatherData {
 function ListScreen() {
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState<WeatherData[]>([]);
-
+  const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
   const handleSearch = async () => {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=3ab6cce6836fddc3c6bea9ded07fae04&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
     );
     const data = await response.json();
     console.log(data);
