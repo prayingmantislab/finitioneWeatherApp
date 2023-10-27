@@ -1,3 +1,4 @@
+//add onPress to the WeatherCardProps
 interface WeatherData {
   id: number;
   weather: {
@@ -17,6 +18,7 @@ interface WeatherData {
 
 interface WeatherCardProps {
   weatherData: WeatherData;
+  // onClick: (id: number) => void;
 }
 
 function WeatherCard({ weatherData }: WeatherCardProps) {

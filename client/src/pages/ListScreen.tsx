@@ -3,6 +3,7 @@ import { useState } from 'react';
 // import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import WeatherCard from '../components/ui/WeatherCard.jsx';
+import { Link } from 'react-router-dom';
 
 interface WeatherData {
   id: number;
@@ -60,7 +61,13 @@ function ListScreen() {
 
         <div className='mt-4'>
           {weather.map((data) => (
-            <WeatherCard key={data.id} weatherData={data} />
+            <Link to='/detailed'>
+              <WeatherCard
+                // onClick={() => handleCardClick()}
+                key={data.id}
+                weatherData={data}
+              />
+            </Link>
           ))}
         </div>
       </div>
