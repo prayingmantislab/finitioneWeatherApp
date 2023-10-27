@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 import WeatherCard from '../components/ui/WeatherCard.jsx';
 
-// import { data } from '../data/mockData.ts';
 interface WeatherData {
   id: number;
   name: string;
