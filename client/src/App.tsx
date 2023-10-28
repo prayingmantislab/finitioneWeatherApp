@@ -20,23 +20,15 @@ function App() {
   const selectedCityData = selectedCityId
     ? weather.find((data) => data.id === selectedCityId)
     : null;
-  return (
-    //TODO : add back buton to detailed screen that will set selectedCityId to null
-    selectedCityId && selectedCityData ? (
-      <DetailedScreen cityWeatherData={selectedCityData} />
-    ) : (
-      <ListScreen
-        weather={weather}
-        onSearchEntered={handleSearch}
-        onSelectedCityId={(cityId: number | null) => setSelectedCityId(cityId)}
-      />
-    )
+  return selectedCityId && selectedCityData ? (
+    <DetailedScreen cityWeatherData={selectedCityData} />
+  ) : (
+    <ListScreen
+      weather={weather}
+      onSearchEntered={handleSearch}
+      onSelectedCityId={(cityId: number | null) => setSelectedCityId(cityId)}
+    />
   );
 }
 
 export default App;
-
-//TODO: improvement 1 create a custom hook to handle the api call
-// const {data, error, isLoading} = useFetchWeather(term);
-
-//TODO: improvement 2 useContext to pass the weather data to the detailed screen
