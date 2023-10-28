@@ -53,7 +53,8 @@ function ListScreen({
         {error && <p>{error}</p>}
 
         <div className='mt-4'>
-          {weather.length === 1 && weather[0].cod === '404' ? (
+          {(weather.length === 1 && weather[0].cod === '404') ||
+          (weather.length === 1 && weather[0].cod === '400') ? (
             <p className='text-lg text-white mb-2'>
               {weather[0].message} Try again
             </p>
