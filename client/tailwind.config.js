@@ -74,6 +74,10 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      shapes: {
+        'trapezoid': 'polygon(0 0, 100% 0, 75% 100%, 0% 100%)',
+      },
+      
     },
   },
   plugins: [require("tailwindcss-animate")],
