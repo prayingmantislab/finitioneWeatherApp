@@ -16,12 +16,21 @@ function ListScreen({
   onSearchEntered,
   onSelectedCityId,
 }: ListScreenProps) {
-  const [term, setTerm] = useState('');
+  const [term, setTerm] = useState<string>('');
+  const [error, setError] = useState<null | string>(null);
+  const handleSearch = async (term: string) => {
+    try {
+      await onSearchEntered(term);
+    } catch (error) {
+      setError('There was an error retrieving the data. Please try again.');
+    }
+  };
+
   return (
-    <div className='max-w-md mx-auto mt-8'>
-      <div className='bg-red rounded-lg shadow-lg p-6'>
-        <h2 className='text-2xl font-bold mb-4 text-left'>Weather</h2>
-        <div className='flex items-center border-b border-gray-300 py-2'>
+    <div className='max-w-md mx-auto mt-8 bg-primary-bg h-screen'>
+      <div className='rounded-lg shadow-lg p-6'>
+        <h2 className='text-2xl mb-4 text-left text-white'>Weather</h2>
+        <div className='flex items-center border-gray-300 py-2'>
           <input
             type='text'
             placeholder='Search for a city or airport'
@@ -29,14 +38,15 @@ function ListScreen({
             onChange={(e) => setTerm(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
-                onSearchEntered(term);
+                handleSearch(term);
               }
             }}
-            className='bg-purple-800 rounded-full appearance-none border-2 border-purple-500 w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500'
+            className='bg-primary-input rounded-full appearance-none w-full py-2 px-4 text-gray-200'
           />
 
           {/* <FontAwesomeIcon icon={faSearch} className='mr-2' /> */}
         </div>
+        {error && <p>{error}</p>}
 
         <div className='mt-4'>
           {weather.map((data) => (
