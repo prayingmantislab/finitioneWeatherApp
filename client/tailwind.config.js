@@ -1,3 +1,4 @@
+/*eslint-env node*/
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -25,6 +26,9 @@ module.exports = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          bg:'#2D2152',
+          input:'#231F40',
+          widgetBackground:'#5936B4'
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",

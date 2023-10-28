@@ -21,7 +21,7 @@ interface DetailedScreenProps {
 }
 function DetailedScreen(props: DetailedScreenProps) {
   const { cityWeatherData } = props;
-  const { weather, main, name, sys, id } = cityWeatherData;
+  const { weather, main, name } = cityWeatherData;
   const firstDescription = weather[0]?.description || '';
   return (
     <div className='h-screen flex flex-col items-center justify-center'>
@@ -31,12 +31,13 @@ function DetailedScreen(props: DetailedScreenProps) {
           backgroundImage: `url(${bgNightSky})`,
         }}
       ></div>
-      <div className='bg-opacity-75 rounded-lg  p-8 z-10'>
+      <div className='bg-opacity-75 p-8 z-10 text-center'>
         <h2 className='text-3xl text-white mb-4'>{name}</h2>
-        <p className='text-6xl text-white mb-4'>{main.temp}°</p>
+        <p className='text-6xl text-white mb-4'>{Math.round(main.temp)}°</p>
         <p className='text-lg  text-white mb-4'>{firstDescription}</p>
-        <p className='text-lg text-white mb-4'>High: {main.temp_max}°C</p>
-        <p className='text-lg  text-white mb-4'>Low: {main.temp_min}°C</p>
+        <p className='text-lg text-white mb-4'>
+          H: {Math.round(main.temp_max)}° L: {Math.round(main.temp_min)}°
+        </p>
         <img src={house} alt='House' className='w-64 mx-auto mt-4' />
       </div>
     </div>
