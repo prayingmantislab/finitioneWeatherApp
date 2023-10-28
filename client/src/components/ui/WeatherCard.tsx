@@ -34,7 +34,7 @@ function WeatherCard({ weatherData, onCardClick }: WeatherCardProps) {
     <div
       onClick={() => onCardClick(id)}
       // className='rounded-lg shadow-lg p-6 flex items-center justify-between'
-      className='bg-primary-widgetBackground rounded-3xl shadow-lg p-6 flex items-center justify-between'
+      className='bg-primary-widgetBackground trapezoid rounded-3xl shadow-lg p-6 flex items-center justify-between'
     >
       <div className='flex items-center w-1/2'>
         <div className='flex flex-col'>

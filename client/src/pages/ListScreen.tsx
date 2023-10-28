@@ -1,6 +1,6 @@
 import { useState } from 'react';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import WeatherCard from '../components/ui/WeatherCard.jsx';
 import { WeatherData } from '@/types.js';
@@ -32,10 +32,14 @@ function ListScreen({
     <div className='max-w-md mx-auto mt-8 bg-primary-bg h-screen'>
       <div className='rounded-lg shadow-lg p-6'>
         <h2 className='text-2xl mb-4 text-left text-white'>Weather</h2>
-        <div className='flex items-center border-gray-300 py-2'>
+        <div className='flex items-center border-gray-300 py-2 px-16'>
+          <FontAwesomeIcon
+            icon={faSearch}
+            className='absolute left-14 text-gray-200 px-8'
+          />
           <input
             type='text'
-            placeholder='Search for a city or airport'
+            placeholder='Search for a city or location'
             value={term}
             onChange={(e) => setTerm(e.target.value)}
             onKeyDown={(e) => {
@@ -45,8 +49,6 @@ function ListScreen({
             }}
             className='bg-primary-input rounded-full appearance-none w-full py-2 px-4 text-gray-200'
           />
-
-          {/* <FontAwesomeIcon icon={faSearch} className='mr-2' /> */}
         </div>
         {error && <p>{error}</p>}
 
