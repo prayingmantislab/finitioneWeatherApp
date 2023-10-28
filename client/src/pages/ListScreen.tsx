@@ -32,10 +32,10 @@ function ListScreen({
     <div className='max-w-md mx-auto mt-8 bg-primary-bg h-screen'>
       <div className='rounded-lg shadow-lg p-6'>
         <h2 className='text-2xl mb-4 text-left text-white'>Weather</h2>
-        <div className='flex items-center border-gray-300 py-2 px-16'>
+        <div className='flex items-center border-gray-300 py-2'>
           <FontAwesomeIcon
             icon={faSearch}
-            className='absolute left-14 text-gray-200 px-8'
+            className='absolute left-8 text-gray-200'
           />
           <input
             type='text'
@@ -47,7 +47,7 @@ function ListScreen({
                 handleSearch(term);
               }
             }}
-            className='bg-primary-input rounded-full appearance-none w-full py-2 px-4 text-gray-200'
+            className='bg-primary-input rounded-full appearance-none w-full py-2 px-4 text-gray-200 text-center'
           />
         </div>
         {error && <p>{error}</p>}
