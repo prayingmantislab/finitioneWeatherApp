@@ -22,8 +22,13 @@ interface WeatherCardProps {
 }
 
 function WeatherCard({ weatherData, onCardClick }: WeatherCardProps) {
+  if (!weatherData) return null;
   const { weather, main, name, sys, id } = weatherData;
-  const iconUrl = `https://openweathermap.org/img/w/${weather[0]?.icon}.png`;
+  const iconUrl =
+    weather && weather.length > 0
+      ? `https://openweathermap.org/img/w/${weather[0].icon}.png`
+      : '';
+  const altText = weather && weather.length > 0 ? weather[0].description : '';
 
   return (
     <div
@@ -33,23 +38,19 @@ function WeatherCard({ weatherData, onCardClick }: WeatherCardProps) {
     >
       <div className='flex items-center w-1/2'>
         <div className='flex flex-col'>
-          <p className='text-6xl text-white mb-2'>{Math.round(main.temp)}°</p>
+          <p className='text-6xl text-white mb-2'>{Math.round(main?.temp)}°</p>
           <p className='text-lg text-white mb-2'>
-            H: {Math.round(main.temp_max)}° L: {Math.round(main.temp_min)}°
+            H: {Math.round(main?.temp_max)}° L: {Math.round(main?.temp_min)}°
           </p>
           <p className='text-lg text-white'>
-            {name}, {sys.country}
+            {name}, {sys?.country}
           </p>
         </div>
       </div>
       <div className='flex items-center w-1/2 justify-end'>
         <div className='flex flex-col items-end'>
-          <img
-            src={iconUrl}
-            alt={weather[0].description}
-            className='h-16 w-16 mr-4'
-          />
-          <h3 className='text-lg text-white mb-2'>{weather[0].description}</h3>
+          <img src={iconUrl} alt={altText} className='h-16 w-16 mr-4' />
+          <h3 className='text-lg text-white mb-2'>{weather[0]?.description}</h3>
         </div>
       </div>
     </div>

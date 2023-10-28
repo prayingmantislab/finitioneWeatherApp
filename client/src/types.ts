@@ -1,6 +1,8 @@
 export interface WeatherData {
   id: number;
+  message: string;
   name: string;
+  cod: string;
   weather: {
     id: number;
     main: string;
