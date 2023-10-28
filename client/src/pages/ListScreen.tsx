@@ -3,7 +3,6 @@ import { useState } from 'react';
 // import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import WeatherCard from '../components/ui/WeatherCard.jsx';
-import { Link } from 'react-router-dom';
 import { WeatherData } from '@/types.js';
 
 interface ListScreenProps {
