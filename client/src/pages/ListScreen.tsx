@@ -29,7 +29,7 @@ function ListScreen({
   };
 
   return (
-    <div className='max-w-md mx-auto mt-8 bg-primary-bg h-screen'>
+    <div className='mx-auto mt-8 bg-primary-bg h-screen w-screen'>
       <div className='rounded-lg shadow-lg p-6'>
         <h2 className='text-2xl mb-4 text-left text-white'>Weather</h2>
         <div className='flex items-center border-gray-300 py-2'>
