@@ -1,3 +1,4 @@
+//add onPress to the WeatherCardProps
 interface WeatherData {
   id: number;
   weather: {
@@ -17,14 +18,18 @@ interface WeatherData {
 
 interface WeatherCardProps {
   weatherData: WeatherData;
+  onCardClick: (id: number) => void;
 }
 
-function WeatherCard({ weatherData }: WeatherCardProps) {
-  const { weather, main, name, sys } = weatherData;
-  const iconUrl = `https://openweathermap.org/img/w/${weather[0].icon}.png`;
+function WeatherCard({ weatherData, onCardClick }: WeatherCardProps) {
+  const { weather, main, name, sys, id } = weatherData;
+  const iconUrl = `https://openweathermap.org/img/w/${weather[0]?.icon}.png`;
 
   return (
-    <div className='bg-purple-800 rounded-lg shadow-lg p-6 flex items-center justify-between'>
+    <div
+      onClick={() => onCardClick(id)}
+      className='bg-purple-800 rounded-lg shadow-lg p-6 flex items-center justify-between'
+    >
       <div className='flex items-center w-1/2'>
         <div className='flex flex-col'>
           <p className='text-2xl font-bold text-white mb-2'>
