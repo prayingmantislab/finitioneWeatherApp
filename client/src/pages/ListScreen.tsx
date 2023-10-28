@@ -54,7 +54,7 @@ function ListScreen({
 
         <div className='mt-4'>
           {weather.length === 1 && weather[0].cod === '404' ? (
-            <p className='text-lg text-white mb-2'>
+            <p className='text-center text-lg text-white mb-2'>
               {weather[0].message} Try again
             </p>
           ) : (
