@@ -1,28 +1,24 @@
+import useFetchWeather from '../hooks/useFetchWeather';
 import bgNightSky from '../assets/bg-night-sky.png';
 import house from '../assets/house.png';
 
 interface DetailedScreenProps {
-  cityWeatherData: {
-    id: number;
-    weather: {
-      description: string;
-      icon: string;
-    }[];
-    main: {
-      temp: number;
-      temp_max: number;
-      temp_min: number;
-    };
-    name: string;
-    sys: {
-      country: string;
-    };
-  };
+  cityName: string; // pass city name as a prop
 }
+
 function DetailedScreen(props: DetailedScreenProps) {
-  const { cityWeatherData } = props;
+  const { cityName } = props;
+  const { data, error, isLoading } = useFetchWeather(cityName); // use the hook
+
+  // handle loading and error states
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!data[0]) return <div>No data</div>;
+
+  const cityWeatherData = data[0];
   const { weather, main, name } = cityWeatherData;
   const firstDescription = weather[0]?.description || '';
+
   return (
     <div className='h-screen flex flex-col items-center justify-center'>
       <div
