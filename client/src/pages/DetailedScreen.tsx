@@ -24,9 +24,6 @@ function DetailedScreen(props: DetailedScreenProps) {
   const { cityWeatherData } = props;
   const { weather, main, name } = cityWeatherData;
   const firstDescription = weather[0]?.description || '';
-  //add a back  button that renders the listScreen
-  //add a back button icon using fontawesome
-  //locate the icon in the top left corner
   return (
     <div className='h-screen flex flex-col items-center justify-center'>
       <div
